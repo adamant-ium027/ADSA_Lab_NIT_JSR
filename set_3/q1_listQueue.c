@@ -1,5 +1,4 @@
-// Implement a circular queue using
-// a linked list
+// Implement a circular queue using a linked list
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -39,7 +38,8 @@ int deQueue(struct Queue* q) {
         value = q->front->data;
         free(q->front);
         q->front = q->rear = NULL;
-    } else {
+    } 
+    else {
         struct Node* temp = q->front;
         value = temp->data;
         q->front = q->front->next;
@@ -82,8 +82,7 @@ int rear(struct Queue* q) {
 }
 
 struct Queue* createQueue() {
-    struct Queue* q = 
-    (struct Queue*)malloc(sizeof(struct Queue));
+    struct Queue* q = (struct Queue*)malloc(sizeof(struct Queue));
     q->front = q->rear = NULL;
     return q;
 }

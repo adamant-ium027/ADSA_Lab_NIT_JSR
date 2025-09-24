@@ -1,11 +1,9 @@
-// Implement a circular queue using
-// an array
+// Implement a circular queue using an array
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <limits.h>
-#define N 2
+#define N 100
 
 int arr[N];
 int front = -1, rear = -1;
@@ -20,9 +18,10 @@ bool is_full();
 int main(void){
     enqueue(10);
     enqueue(20);
-    dequeue();
     enqueue(30);
     dequeue();
+
+    printf("front = %d, rear = %d, is_empty = %d, is_full = %d\n", peek_front(), peek_rear(), is_empty(), is_full());
 
     return 0;
 }
@@ -66,25 +65,31 @@ void dequeue(){
 }
 
 int peek_rear(){
-    if(is_empty()) return INT_MAX;
+    if(is_empty()){
+        printf("Queue is empty\n");
+        return -1;
+    }
 
     return arr[rear];
 }
 
 int peek_front(){
-    if(is_empty()) return INT_MIN;
+    if(is_empty()){
+        printf("Queue is empty\n");
+        return -1;
+    }
     
     return arr[front];
 }
 
 bool is_empty(){
-    if(front == -1) return 1;
+    if(front == -1) return true;
     
     return false;
 }
 
 bool is_full(){
-    if( (front == rear + 1) || (front == 0 && rear == N-1)) return 1;
+    if((front == rear + 1) || (front == 0 && rear == N-1)) return true;
 
     return false;
 }
