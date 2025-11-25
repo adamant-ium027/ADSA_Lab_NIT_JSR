@@ -24,10 +24,22 @@ int dfs(int idx, int start) {
 }
 
 int main() {
-    scanf("%d %d %d", &n, &e, &m);
+    n = 5; // number of vertices
+    e = 6; // number of edges
+    m = 3; // clique size to check
+
+    int edges[6][2] = {
+        {0, 1},
+        {1, 2},
+        {2, 3},
+        {0, 2},
+        {1, 3},
+        {3, 4}
+    };
+
     for (int i = 0; i < e; i++) {
-        int u, v;
-        scanf("%d %d", &u, &v);
+        int u = edges[i][0];
+        int v = edges[i][1];
         G[u][v] = G[v][u] = 1;
     }
 
